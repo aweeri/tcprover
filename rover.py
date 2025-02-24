@@ -5,6 +5,7 @@ HOST = ''          # Listen on all available network interfaces
 PORT = 5000        # Choose an available port
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server_socket.bind((HOST, PORT))
     server_socket.listen(1)
     print(f"Server listening on port {PORT}...")
