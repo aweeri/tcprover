@@ -23,7 +23,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                     # Change directory to your repository and run git pull
                     result = subprocess.run(
                         ['git', 'pull'],
-                        cwd='/path/to/your/repo',  # update this to your repo location
+                        cwd='/home/ari/tcprover',  # update this to your repo location
                         capture_output=True,
                         text=True
                     )
