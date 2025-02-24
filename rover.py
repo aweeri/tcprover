@@ -34,8 +34,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                 if command.lower() == 'reload':
                     response = f"\nReloading..."
                     conn.sendall(response.encode())
-                    conn.close()
-                    conn.shutdown()
+                    conn.shutdown(socket.SHUT_RDWR)
                     exit()
                     
                 
