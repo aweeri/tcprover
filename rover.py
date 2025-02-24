@@ -41,6 +41,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                     response = f"pong"
                     conn.sendall(response.encode())
                 
+                if command.lower() == 'test':
+                    response = f"haiii"
+                    conn.sendall(response.encode())
+                
                 else:
                     conn.sendall(b"Unknown command")
                 
