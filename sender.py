@@ -1,5 +1,12 @@
 import socket
 
+welcome = """\033[31m
+  _____ ___ ___ ___  _____   _____ ___ 
+ |_   _/ __| _ \ _ \/ _ \ \ / / __| _ \\
+   | || (__|  _/   / (_) \ V /| _||   /
+   |_| \___|_| |_|_\\\___/ \_/ |___|_|_\\                                 \033[0m
+"""
+
 def send_command(command, host='192.168.1.27', port=5000):
     # Create a TCP/IP socket
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -13,7 +20,7 @@ def send_command(command, host='192.168.1.27', port=5000):
 
 if __name__ == "__main__":
     # Example command input
-    
+    print(welcome)
     while True:
             command = input("\033[31m$ \033[0m") 
             try:
