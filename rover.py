@@ -28,12 +28,14 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                         capture_output=True,
                         text=True
                     )
-                    response = f"\n{result.stdout}\n{result.stderr} \n\n Type 'reload' to apply changes"
+                    response = f"\n{result.stdout}\n{result.stderr}\nType 'reload' to apply changes"
                     conn.sendall(response.encode())
                 
                 if command.lower() == 'reload':
-                    response = f"\n{result.stdout}\n{result.stderr} \n\n Reloading..."
+                    response = f"\nReloading..."
                     conn.sendall(response.encode())
+                    conn.close()
+                    conn.shutdown()
                     exit()
                     
                 
