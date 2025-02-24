@@ -23,9 +23,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                 
                 if command.lower() == 'help':
                     response = """List of allowed commands:
-                    update
-                    reload
-                    ping
+        help
+        update
+        reload
+        ping
                     """
                     
                     
