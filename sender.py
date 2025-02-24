@@ -14,6 +14,9 @@ def send_command(command, host='192.168.1.27', port=5000):
 if __name__ == "__main__":
     # Example command input
     
-    while 1:
-        command = input("Enter a command to send: ")
-        send_command(command)
+    while True:
+        try:
+            command = input("Enter a command to send: ")
+            send_command(command)
+        except:
+            print("Failed to send command, try again.")
