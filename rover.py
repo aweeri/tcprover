@@ -19,6 +19,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                     break
                 command = data.decode().strip()
                 print(f"Received command: {command}")
+                
                 if command.lower() == 'update':
                     # Change directory to your repository and run git pull
                     result = subprocess.run(
@@ -29,5 +30,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                     )
                     response = f"Update output:\n{result.stdout}\n{result.stderr}"
                     conn.sendall(response.encode())
+                
+                if command.lower() == 'ping':
+                    response = f"pong"
+                    conn.sendall(response.encode())
+                
                 else:
                     conn.sendall(b"Unknown command")
+                
