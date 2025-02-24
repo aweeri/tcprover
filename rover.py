@@ -21,7 +21,17 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                 command = data.decode().strip()
                 print(f"Received command: {command}")
                 
-                if command.lower() == 'update':
+                if command.lower() == 'help':
+                    response = """List of allowed commands:
+                    update
+                    reload
+                    ping
+                    """
+                    
+                    
+                    conn.sendall(response.encode())
+                
+                elif command.lower() == 'update':
                     # Change directory to your repository and run git pull
                     result = subprocess.run(
                         ['git', 'pull'],
@@ -32,19 +42,15 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                     response = f"\n{result.stdout}\n{result.stderr}\nType 'reload' to apply changes"
                     conn.sendall(response.encode())
                 
-                if command.lower() == 'reload':
+                elif command.lower() == 'reload':
                     response = f"\nReloading..."
                     conn.sendall(response.encode())
                     conn.shutdown(socket.SHUT_RDWR)
                     exit()
                     
                 
-                if command.lower() == 'ping':
+                elif command.lower() == 'ping':
                     response = f"pong"
-                    conn.sendall(response.encode())
-                
-                if command.lower() == 'test':
-                    response = f"haiii"
                     conn.sendall(response.encode())
                 
                 else:
