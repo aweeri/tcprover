@@ -9,7 +9,7 @@ def send_command(command, host='192.168.1.27', port=5000):
         s.sendall(command.encode('utf-8'))
         # Receive the response from the server
         response = s.recv(1024)
-        print(f"R: {response.decode('utf-8')}")
+        print(f"Rover: {response.decode('utf-8')}")
 
 if __name__ == "__main__":
     # Example command input

@@ -28,7 +28,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                         capture_output=True,
                         text=True
                     )
-                    response = f"Update output:\n{result.stdout}\n{result.stderr}"
+                    response = f"\n{result.stdout}\n{result.stderr} \n\n 'reload' to apply changes"
                     conn.sendall(response.encode())
                 
                 if command.lower() == 'ping':
