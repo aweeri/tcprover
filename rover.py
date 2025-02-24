@@ -22,13 +22,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
                 print(f"Received command: {command}")
                 
                 if command.lower() == 'help':
-                    response = """List of allowed commands:
-        help
-        update
-        reload
-        ping
-                    """
-                    
+                    response = "List of allowed commands:\nhelp\nupdate\nreload\nping"
                     
                     conn.sendall(response.encode())
                 
